@@ -9,7 +9,75 @@
 
 # User Management System
 
-A Laravel-based user management system with JWT authentication.
+A Laravel-based user management system with Docker support.
+
+## Prerequisites
+
+- Docker
+- Docker Compose
+
+## Setup Instructions
+
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd user-management
+```
+
+2. Copy the environment file
+```bash
+cp .env.example .env
+```
+
+3. Start Docker containers
+```bash
+docker-compose up -d
+```
+
+4. Install dependencies
+```bash
+docker-compose exec app composer install
+```
+
+5. Generate application key
+```bash
+docker-compose exec app php artisan key:generate
+```
+
+6. Run migrations
+```bash
+docker-compose exec app php artisan migrate
+```
+
+## Available Services
+
+- **Application**: http://localhost:8000
+- **Database**: PostgreSQL (accessible on port 5432)
+
+## Stopping the Application
+
+To stop the Docker containers:
+```bash
+docker-compose down
+```
+
+## Troubleshooting
+
+If you encounter permission issues:
+```bash
+docker-compose exec app chown -R www-data:www-data storage bootstrap/cache
+```
+
+## Environment Configuration
+
+The application uses PostgreSQL as the database with the following default configuration:
+- Host: db
+- Port: 5432
+- Database: user_management
+- Username: root
+- Password: root
+
+Make sure these values match your `.env` file.
 
 ## About Laravel
 
@@ -24,31 +92,6 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Setup and Installation
-
-1. Clone the repository
-2. Install dependencies:
-```bash
-composer install
-```
-3. Copy `.env.example` to `.env` and configure your database settings
-4. Generate application key:
-```bash
-php artisan key:generate
-```
-5. Run migrations:
-```bash
-php artisan migrate
-```
-6. Generate JWT secret:
-```bash
-php artisan jwt:secret
-```
-7. Start the development server:
-```bash
-php artisan serve
-```
 
 ## API Documentation
 
