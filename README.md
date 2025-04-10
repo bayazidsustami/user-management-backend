@@ -7,6 +7,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# User Management System
+
+A Laravel-based user management system with JWT authentication.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -20,6 +24,100 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
+## Setup and Installation
+
+1. Clone the repository
+2. Install dependencies:
+```bash
+composer install
+```
+3. Copy `.env.example` to `.env` and configure your database settings
+4. Generate application key:
+```bash
+php artisan key:generate
+```
+5. Run migrations:
+```bash
+php artisan migrate
+```
+6. Generate JWT secret:
+```bash
+php artisan jwt:secret
+```
+7. Start the development server:
+```bash
+php artisan serve
+```
+
+## API Documentation
+
+### Authentication Endpoints
+
+#### Register
+- **POST** `/api/register`
+- **Body:**
+```json
+{
+    "name": "string",
+    "email": "string",
+    "password": "string",
+    "password_confirmation": "string"
+}
+```
+
+#### Login
+- **POST** `/api/login`
+- **Body:**
+```json
+{
+    "email": "string",
+    "password": "string"
+}
+```
+
+#### Forgot Password
+- **POST** `/api/forgot-password`
+- **Body:**
+```json
+{
+    "email": "string"
+}
+```
+
+#### Logout
+- **POST** `/api/logout`
+- **Headers:** `Authorization: Bearer {token}`
+
+### User Management Endpoints
+
+#### Update Profile
+- **POST** `/api/profile`
+- **Headers:** `Authorization: Bearer {token}`
+- **Body:**
+```json
+{
+    "name": "string",
+    "email": "string"
+}
+```
+
+#### Get All Users
+- **GET** `/api/users`
+- **Headers:** `Authorization: Bearer {token}`
+
+#### Get Single User
+- **GET** `/api/users/{id}`
+- **Headers:** `Authorization: Bearer {token}`
+
+## Authentication
+
+All protected routes require a JWT token in the Authorization header:
+```
+Authorization: Bearer {your_token}
+```
+
+The token is obtained after successful login.
 
 ## Learning Laravel
 
