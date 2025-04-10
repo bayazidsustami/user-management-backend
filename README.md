@@ -24,7 +24,15 @@ git clone <repository-url>
 cd user-management
 ```
 
-2. Copy the environment file
+2. Make the installation script executable and run it:
+```bash
+chmod +x install.sh
+./install.sh
+```
+
+Alternatively, you can perform the installation steps manually:
+
+1. Copy the environment file
 ```bash
 cp .env.example .env
 ```
