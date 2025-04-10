@@ -19,7 +19,8 @@ use App\Http\Controllers\UserController;
 // Public routes
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-Route::post('forgot-password', [AuthController::class, 'forgotPassword']);
+Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
+Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('password.reset');
 
 // Protected routes
 Route::middleware('auth:api')->group(function () {
