@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
+//only test PR
 // Public routes
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
