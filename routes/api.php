@@ -16,9 +16,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
 //add malformed changes
 fmdlsafmld lfals dfdsja
-
 // Public routes
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
